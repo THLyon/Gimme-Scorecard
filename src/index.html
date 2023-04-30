@@ -8,14 +8,24 @@
         <!-- <script src = 'build/bundle.js'></script> -->
         <link rel="stylesheet" href="./styles.css"> 
         <!-- <link type="text/css" rel="stylesheet"  href="src/style.css"/> -->
-
+        <script src='./index.js'></script>
         <!-- incredibly slow with either of the two above uncommented-->
         <title>Gimme</title>
     </head>
     <body>
-        <div id="root"></div>
-        <div> this is <b>Gimme</b></div>
-        <script src='./index.js'></script>
+        <div class="main-container">
+            <div class="title-container">
+                <p id="title"><b>Gimme</b></p>
+            </div>
+            <div class="leaderboard-list">
+                <ul id="row">
+                    <span id="position"></span>
+                    <span id="name"></span>
+                    <span id="rank"></span>
+                    <span id="totalScore"> </span>
+              </ul>
+            </div>
+        </div>
         <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     -->
         <!-- webpack and webpack-dev-server script-->
     </body>

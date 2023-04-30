@@ -1,7 +1,7 @@
-const fs = require('fs/promises'); 
-const path = require('path'); 
-const fetch = (...args) =>
-	import('node-fetch').then(({default: fetch}) => fetch(...args));
+// const fs = require('fs/promises'); 
+// const path = require('path'); 
+// const fetch = (...args) =>
+// 	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 
 //api to access current season
@@ -90,6 +90,9 @@ tournamentController.getTournament =  (req, res, next) => {
    }));
 }
 
+//if issue add async to function
+    //await to fetch
+    //async to fetch at frontend
 
 //middleware to access leaderboard
 tournamentController.getLeaderboard =  (req, res, next) => {
@@ -106,7 +109,6 @@ tournamentController.getLeaderboard =  (req, res, next) => {
     })
     .then((data) => data.json())
     .then((data) => {
-        // console.log(data)
         const leaders = []; 
         // for(let i = 0; i < data.Tournament.Players.length; i++){
         //     if(i <= 10){
