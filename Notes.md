@@ -1,0 +1,47 @@
+Styling Notes: 
+
+- if id is divisible by 2, class is rowb(equals darker gray)
+
+
+
+
+- api cost 
+    - 
+
+
+
+-deleted html 
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- <script defer src="build/bundle.js"></script> -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- <script src = 'build/bundle.js'></script> -->
+        <link rel="stylesheet" href="./styles.css"> 
+        <!-- <link type="text/css" rel="stylesheet"  href="src/style.css"/> -->
+        <script src='./index.js'></script>
+        <!-- incredibly slow with either of the two above uncommented-->
+        <title>Gimme</title>
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="title-container">
+                <p id="title"><b>Gimme</b></p>
+            </div>
+            <div class="leaderboard-list">
+                <ul id="row">
+                    <span id="position"></span>
+                    <span id="name"></span>
+                    <span id="rank"></span>
+                    <span id="totalScore"> </span>
+              </ul>
+            </div>
+        </div>
+        <!-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>     -->
+        <!-- webpack and webpack-dev-server script-->
+    </body>
+</html>
+-->
