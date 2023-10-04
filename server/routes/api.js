@@ -11,18 +11,18 @@ const router = express.Router();
 
 
 //! API CONTROLLER ROUTES
-router.get('/gimme', tournamentController.getSeason, tournamentController.getTournament, tournamentController.getLeaderboard, (req, res) => {
-    res.status(200).send(res.locals.leaders);  //.tournamentData
-});
+// router.get('/gimme', tournamentController.getSeason, tournamentController.getTournament, tournamentController.getLeaderboard, (req, res) => {
+//     res.status(200).send(res.locals.leaders);  //.tournamentData
+// });
 
-// router.get('/details', courseController.getSeason, courseController.getTournament, courseController.getCourse, (req, res) => {
-router.get('/details', courseController.getCourse, (req, res) => {
-    return res.status(200).send(res.locals.details); 
-})
+// // router.get('/details', courseController.getSeason, courseController.getTournament, courseController.getCourse, (req, res) => {
+// router.get('/details', courseController.getCourse, (req, res) => {
+//     return res.status(200).send(res.locals.details); 
+// })
 
-router.get('/season', tournamentController.getSeason, (req, res) => {
-    return res.status(200).json(res.locals.season);
-})
+// router.get('/season', tournamentController.getSeason, (req, res) => {
+//     return res.status(200).json(res.locals.season);
+// })
 
 router.get('/test', tournamentController.getLeaderboard, (req, res) => {
     return res.status(200).json(res.locals.leaders)

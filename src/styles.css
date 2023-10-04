@@ -48,14 +48,14 @@ html{
     width: 580px;  
 }
 
-#row{
-    /* display: flow; 
+/* #row{
+    display: flow; 
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    align-content: space-around; */
+    align-content: space-around;
     margin: 5px; 
-    background-color: rgb(225, 225, 225);
+    background-color: rgb(112, 193, 119);
     height: 40px;
     width: 530px; 
 }
@@ -72,5 +72,21 @@ html{
 }
 #totalScore{
     font-size: large;
+} */
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(112, 193, 119);
+    margin: 5px;
+    height: 40px;
+    width: 580px; /* Adjust the width as needed */
+    padding: 5px;
+    border-radius: 5px;
 }
 
+.data-row strong {
+    font-size: large;
+    margin-right: 10px;
+}

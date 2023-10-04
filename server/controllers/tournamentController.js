@@ -1,7 +1,7 @@
 // const fs = require('fs/promises'); 
 // const path = require('path'); 
-// const fetch = (...args) =>
-// 	import('node-fetch').then(({default: fetch}) => fetch(...args));
+const fetch = (...args) =>
+	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 
 //api to access current season
