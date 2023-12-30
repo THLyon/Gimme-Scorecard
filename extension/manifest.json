@@ -14,7 +14,8 @@
   "host_permissions": [
     "https://api.sportsdata.io/golf/v2/json/Leaderboard",
     "https://api.sportsdata.io/golf/v2/json/CurrentSeason",
-    "https://api.sportsdata.io/golf/v2/json/Tournaments"
+    "https://api.sportsdata.io/golf/v2/json/Tournaments", 
+    "https://localhost:3434/api/test"
   ],
   "action": {
     "default_popup": "popup.html",

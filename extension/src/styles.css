@@ -5,11 +5,11 @@ html{
     align-items: space-around;
     align-content: space-around;
 
-    background-color:  rgb(74, 104, 74);
-    height: 400px;
-    width: 600px; 
+    background-color: #547F43;
+    height: 515px;
+    width: 620px; 
     /* padding: 0px !important; */
-    overflow: hidden;
+    /* overflow: hidden; */
 };
 
 .main-container{
@@ -18,8 +18,8 @@ html{
     justify-content: center;
     align-items: center;
 
-    background-color: rgb(89, 125, 89);
-    width: 590px; 
+    background-color: #2C5F2D;
+    width: 450px; 
     height: 390px;
 }
 
@@ -29,9 +29,10 @@ html{
     justify-content: center;
     align-items: center;
 
-    background-color:  rgb(212, 191, 2);
+    background-color:  #DAB033;
+    color: #333333;
     height: 40px;
-    width: 580px;
+    width: 605px;
 }
 
 .leaderboard-list{
@@ -42,10 +43,10 @@ html{
     align-items: center;
     align-content: space-around;
 
-    background-color: rgb(226, 127, 127);
+    background-color:#FAFAF1;
     margin-top: 4px;
-    height: 320px;
-    width: 580px;  
+    height: 455px;
+    width: 605px;  
 }
 
 /* #row{
@@ -74,19 +75,78 @@ html{
     font-size: large;
 } */
 
+
+/* .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(112, 193, 119);
+    margin: 5px;
+    height: 30px;
+    width: 580px;  // Adjust the width as needed 
+    padding: 5px;
+    border-radius: 1px;
+}
+
+
+.data-row strong {
+    font-size: large;
+    margin-right: 10px;
+} */
+
+
 .data-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(112, 193, 119);
     margin: 5px;
-    height: 40px;
-    width: 580px; /* Adjust the width as needed */
+    height: 30px;
+    width: 585px;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 1px;
 }
 
-.data-row strong {
-    font-size: large;
-    margin-right: 10px;
+.data-row div {
+    margin-right: 10px; /* Adjust space between columns */
+    white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.position-div {
+    padding-left: 10px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.rank-div{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+ .totalScore-div {
+    padding-right: 10px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.name-div {
+    padding-left: 70px;
+    flex: 1 1 auto; /* Allow to grow and shrink */
+    text-align: left; /* Aligns the name to the left */
+}
+
+.rank-div {
+    padding-right: 40px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 80px; /* Or a width that fits your content */
+    text-align: center;
+} 
+
+.totalScore-div {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 80px; /* Or a width that fits your content */
+    text-align: center;
 }
