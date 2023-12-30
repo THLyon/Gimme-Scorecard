@@ -35,4 +35,4 @@ __License:__
 Gimme is made available under the MIT License.
 
 __Acknowledgments:__
-A special thanks to all the contributors and the golfing community for their continuous support.
+A special thanks to PGA, the players, and the golfing community for their continuous support.
