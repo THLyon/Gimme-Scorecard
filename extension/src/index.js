@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     getScoreCard();
 
@@ -15,6 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
             rowContainer.style.backgroundColor = '#6BA155'; // Change to your specific green color
         } else {
             rowContainer.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
+        }
+
+        if(count === 0){
+            rowContainer.style.marginTop = '5px'; 
+        } else if (count === 9){
+            rowContainer.style.marginBottom = '5px'; 
         }
     
         // const positionDiv = document.createElement('div');
@@ -52,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         leaderboardList.appendChild(rowContainer);
     };
+
     async function getScoreCard() {
         try {
             const response = await fetch('http://localhost:3434/api/test');
@@ -73,8 +79,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
     }
+    const menuIcon = document.getElementById('menuIcon');
+    menuIcon.addEventListener('click', toggleMenu);
+
+    document.addEventListener('click', closeMenu);
 });
 
 
+function toggleMenu() {
+    const menu = document.getElementById('popupMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
 
-
+function closeMenu(event) {
+    const menu = document.getElementById('popupMenu');
+    if (menu.style.display === 'block' && !menu.contains(event.target) && !document.getElementById('menuIcon').contains(event.target)) {
+        menu.style.display = 'none';
+    }
+}
