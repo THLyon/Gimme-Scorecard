@@ -5,7 +5,7 @@ html{
     align-items: space-around;
     align-content: space-around;
 
-    background-color: #547F43;
+    background-color: #1c4932;
     height: 550px;
     width: 620px; 
     /* padding: 0px !important; */
@@ -18,7 +18,7 @@ html{
     justify-content: center;
     align-items: center;
 
-    background-color: #2C5F2D;
+    background-color: #1c4932;
     width: 450px; 
     height: 390px;
 }
@@ -50,10 +50,10 @@ html{
     position: absolute; /* Positioning relative to its parent */
     top: 50px; /* Positioned right below the header */
     right: 0;
-    background: #333; /* Menu background color */
-    color: white;
+    background: #1c3424; /* Menu background color */
+    color: #ffffff;
     width: 200px; /* Full width */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: add some shadow for depth */
+    box-shadow: 0 4px 8px #84948c; /* Optional: add some shadow for depth */
     z-index: 1000; /* Ensure it's on top of other elements */
 }
 
@@ -62,7 +62,7 @@ html{
     padding: 10px; 
     color: white;
     text-decoration: none;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #6a7d63;
 }
 
 .popup-menu a:hover {
@@ -77,10 +77,12 @@ html{
     align-items: center;
     margin-top: 5px;
     margin-bottom: 5px; 
-    background-color:  #DAB033;
-    color: #333333;
+    background-color:  #1c6747;
+    border: solid #f8f8ea;
+    border-width: 1px;
+    color: #FAFAF1;
     height: 30px;
-    width: 605px;
+    width: 603px;
 }
 
 .leaderboard-list{
@@ -101,7 +103,7 @@ html{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(112, 193, 119);
+    background-color: #2e9474;
     margin: 3px;
     height: 30px;
     width: 585px;

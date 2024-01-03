@@ -10,8 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const rowContainer = document.createElement('div');
         rowContainer.classList.add('data-row'); // Use the 'data-row' class for styling
 
-        if (count % 2 === 0) {
-            rowContainer.style.backgroundColor = '#6BA155'; // Change to your specific green color
+        if (count % 2 !== 0) {
+            rowContainer.style.backgroundColor = '#309C64'; // Change to your specific green color
+            // rowContainer.style.color = '#FAFAF1'
         } else {
             rowContainer.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
         }
