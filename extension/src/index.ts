@@ -1,140 +1,169 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 document.addEventListener('DOMContentLoaded', () => {
     getScoreCard();
+
     let count = 0;
-    const leaderboardList = document.querySelector('#leaderboard-list');
-    const makeListItem = (pos, name, rank, totalScore) => {
+
+    const leaderboardList = document.querySelector<HTMLDivElement>('#leaderboard-list');
+
+    const makeListItem = (pos: number, name: string, rank: string, totalScore: number) => {
+
         const rowContainer = document.createElement('div');
         rowContainer.classList.add('data-row'); // Use the 'data-row' class for styling
+
         if (count % 2 !== 0) {
             rowContainer.style.backgroundColor = '#309C64'; // Change to your specific green color
             // rowContainer.style.color = '#FAFAF1'
-        }
-        else {
+        } else {
             rowContainer.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
         }
-        if (count === 0) {
+
+        if(count === 0){
             rowContainer.style.marginTop = '5px';
-        }
-        else if (count === 9) {
+        } else if (count === 9){
             rowContainer.style.marginBottom = '5px';
         }
+
         const positionDiv = document.createElement('div');
         positionDiv.classList.add('position-div');
         positionDiv.innerHTML = `<strong>Position:</strong> ${pos + 1}`;
+
         const nameDiv = document.createElement('div');
         nameDiv.classList.add('name-div');
         nameDiv.innerHTML = `<strong>Name:</strong> ${name}`;
+
         const rankDiv = document.createElement('div');
         rankDiv.classList.add('rank-div');
         rankDiv.innerHTML = `<strong>Rank:</strong> ${rank}`;
+
         const totalScoreDiv = document.createElement('div');
         totalScoreDiv.classList.add('totalScore-div');
         totalScoreDiv.innerHTML = `<strong>Total Score:</strong> ${totalScore}`;
+
         // Append the data elements to the row container
         rowContainer.appendChild(positionDiv);
         rowContainer.appendChild(nameDiv);
         rowContainer.appendChild(rankDiv);
         rowContainer.appendChild(totalScoreDiv);
-        leaderboardList === null || leaderboardList === void 0 ? void 0 : leaderboardList.appendChild(rowContainer);
+
+        leaderboardList?.appendChild(rowContainer);
     };
-    function getScoreCard() {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const response = yield fetch('http://localhost:3434/api/test');
-                if (!response.ok) {
-                    throw new Error('API request failed');
-                }
-                const scorecardArray = yield response.json();
-                console.log('Scorecard data:', scorecardArray);
-                console.log('Type of scorecardArray:', typeof scorecardArray);
-                scorecardArray.forEach(({ Position, Name, Rank, TotalScore }) => {
-                    makeListItem(Position, Name, Rank, TotalScore);
-                    count++;
-                });
+
+    async function getScoreCard() {
+        try {
+            const response = await fetch('http://localhost:3434/api/test');
+            if (!response.ok) {
+                throw new Error('API request failed');
             }
-            catch (error) {
+            const scorecardArray = await response.json();
+            console.log('Scorecard data:', scorecardArray);
+            console.log('Type of scorecardArray:', typeof scorecardArray);
+            scorecardArray.forEach(({ Position, Name, Rank, TotalScore }: {
+                Position: number;
+                Name: string;
+                Rank: string;
+                TotalScore: number;
+            }) => {
+                makeListItem(Position, Name, Rank, TotalScore);
+                count++;
+            });
+         } catch (error) {
                 console.error('Error fetching scorecard:', error);
                 if (error instanceof TypeError) {
                     console.error('There was a network error:', error.message);
                     // Additional logic to handle network errors can go here
                 }
             }
-        });
     }
     const menuIcon = document.getElementById('menuIcon');
-    menuIcon === null || menuIcon === void 0 ? void 0 : menuIcon.addEventListener('click', toggleMenu);
+    menuIcon?.addEventListener('click', toggleMenu);
+
     document.addEventListener('click', closeMenu);
 });
+
+
 function toggleMenu() {
     const menu = document.getElementById('popupMenu');
     if (menu) {
         menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 }
-// const menu = document.getElementById('popupMenu');
-// menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-function closeMenu(event) {
-    var _a;
+    
+    // const menu = document.getElementById('popupMenu');
+    // menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+
+
+function closeMenu(event: MouseEvent) {
     const menu = document.getElementById('popupMenu');
-    if (menu && menu.style.display === 'block' && !menu.contains(event.target) && !((_a = document.getElementById('menuIcon')) === null || _a === void 0 ? void 0 : _a.contains(event.target))) {
+    if (menu && menu.style.display === 'block' && !menu.contains(event.target as Node) && !document.getElementById('menuIcon')?.contains(event.target as Node)) {
         menu.style.display = 'none';
     }
 }
+
+
+
+
+
 // document.addEventListener('DOMContentLoaded', () => {
 //     getScoreCard();
+
 //     let count = 0; 
+
 //     const leaderboardList = document.querySelector('#leaderboard-list');
+
 //     const makeListItem = (pos, name, rank, totalScore) => {
+
 //         const rowContainer = document.createElement('div');
 //         rowContainer.classList.add('data-row'); // Use the 'data-row' class for styling
+
 //         if (count % 2 !== 0) {
 //             rowContainer.style.backgroundColor = '#309C64'; // Change to your specific green color
 //             // rowContainer.style.color = '#FAFAF1'
 //         } else {
 //             rowContainer.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
 //         }
+
 //         if(count === 0){
 //             rowContainer.style.marginTop = '5px'; 
 //         } else if (count === 9){
 //             rowContainer.style.marginBottom = '5px'; 
 //         }
+    
 //         // const positionDiv = document.createElement('div');
 //         // positionDiv.innerHTML = `<strong>Position:</strong> ${pos + 1}`;
+    
 //         // const nameDiv = document.createElement('div');
 //         // nameDiv.innerHTML = `<strong>Name:</strong> ${name}`;
+    
 //         // const rankDiv = document.createElement('div');
 //         // rankDiv.innerHTML = `<strong>Rank:</strong> ${rank}`;
+    
 //         // const totalScoreDiv = document.createElement('div');
 //         // totalScoreDiv.innerHTML = `<strong>Total Score:</strong> ${totalScore}`;
 //         const positionDiv = document.createElement('div');
 //         positionDiv.classList.add('position-div');
 //         positionDiv.innerHTML = `<strong>Position:</strong> ${pos + 1}`;
+
 //         const nameDiv = document.createElement('div');
 //         nameDiv.classList.add('name-div');
 //         nameDiv.innerHTML = `<strong>Name:</strong> ${name}`;
+
 //         const rankDiv = document.createElement('div');
 //         rankDiv.classList.add('rank-div');
 //         rankDiv.innerHTML = `<strong>Rank:</strong> ${rank}`;
+
 //         const totalScoreDiv = document.createElement('div');
 //         totalScoreDiv.classList.add('totalScore-div');
 //         totalScoreDiv.innerHTML = `<strong>Total Score:</strong> ${totalScore}`;
+    
 //         // Append the data elements to the row container
 //         rowContainer.appendChild(positionDiv);
 //         rowContainer.appendChild(nameDiv);
 //         rowContainer.appendChild(rankDiv);
 //         rowContainer.appendChild(totalScoreDiv);
+    
 //         leaderboardList.appendChild(rowContainer);
 //     };
+
 //     async function getScoreCard() {
 //         try {
 //             const response = await fetch('http://localhost:3434/api/test');
@@ -158,12 +187,16 @@ function closeMenu(event) {
 //     }
 //     const menuIcon = document.getElementById('menuIcon');
 //     menuIcon.addEventListener('click', toggleMenu);
+
 //     document.addEventListener('click', closeMenu);
 // });
+
+
 // function toggleMenu() {
 //     const menu = document.getElementById('popupMenu');
 //     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 // }
+
 // function closeMenu(event) {
 //     const menu = document.getElementById('popupMenu');
 //     if (menu.style.display === 'block' && !menu.contains(event.target) && !document.getElementById('menuIcon').contains(event.target)) {
