@@ -18,7 +18,7 @@
     "https://localhost:3434/api/test"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "/popup.html",
     "default_title": "Gimme"
   },
   "content_scripts": [
@@ -27,5 +27,14 @@
       "js": ["./src/index.js"],
       "run_at": "document_start"
     }
-  ]
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["src/tournament-details.html", "src/course-details.html"],
+      "matches": ["<all_urls>"] 
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }

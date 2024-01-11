@@ -1,5 +1,22 @@
+#Dependency directories
+node_modules/
+
+#Build Outputs
+*.bundle.js
+*.bundle.js.map
+
+#Environment Files
+.env
+
+#System Files
 .DS_Store
 
+#Editor directories
+.vscode/
+.idea/
+
+#Optional: Logs
+*.log
 
 Contributing
 Interested in contributing to Gimme? We welcome contributions of all forms:
