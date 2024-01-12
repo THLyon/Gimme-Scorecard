@@ -27,6 +27,10 @@ app.use('/api', apiRouter, (req,res) => {
     return res.status(200).json(res.locals);
 });
 
+// app.get('/tournaments', apiRouter, (req,res) => {
+//   return res.status(200).json(res.locals)
+// })
+
 // app.use('/api/details', apiRouter, (req, res) => {
 //     return res.status(200).json(res.locals.details);
 // })
