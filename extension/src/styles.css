@@ -1,4 +1,4 @@
-html{
+.gimme-html{
     display: flex; 
     flex-direction: column;
     justify-content: space-around;
@@ -12,7 +12,7 @@ html{
     /* over;flow: hidden; */
 };
 
-.main-container{
+.gimme-main-container{
     display: flex; 
     flex-flow: column;
     justify-content: center;
@@ -23,7 +23,7 @@ html{
     height: 390px;
 }
 
-.header-container {
+.gimme-header-container {
     display: flex;
     justify-content: center;  /*Aligns the menu icon and title to opposite ends */
     align-items: center;
