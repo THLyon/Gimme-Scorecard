@@ -76,9 +76,7 @@ tournamentController.getTournament =  (req, res, next) => {
               "Location": tournament.Location, 
               "Par": tournament.Par, 
               "Purse": tournament.Purse, 
-              "Start": tournament.StartDateTime, 
-              "City": tournament.City,
-              "State": tournament.State 
+              "Start": tournament.StartDateTime
             };
             res.locals.tournament = tournamentDetails;
             console.log(res.locals.tournament);

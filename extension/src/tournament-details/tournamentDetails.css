@@ -69,8 +69,8 @@ html{
     background-color: #555;
 }
 
-/** Leaderboard */
-.leaderboard-title-container{
+/** Tournament */
+.tournament-title-container{
     display: flex;
     text-align: center;
     justify-content: center;
@@ -85,7 +85,7 @@ html{
     width: 603px;
 }
 
-.leaderboard-list{
+.tournament-list{
     overflow: auto; 
     display: flex; 
     flex-direction: column;
@@ -116,44 +116,55 @@ html{
     white-space: nowrap; /* Prevents the text from wrapping */
 }
 
-.position-div {
-    padding-left: 10px;
+.Tournament_Name{
     flex: 0 0 auto; /* Do not grow or shrink */
     width: 60px; /* Or a width that fits your content */
     text-align: center;
 }
 
-.rank-div{
+.Start_Date{
     flex: 0 0 auto; /* Do not grow or shrink */
     width: 60px; /* Or a width that fits your content */
     text-align: center;
 }
 
- .totalScore-div {
-    padding-right: 10px;
+.End_Date{
     flex: 0 0 auto; /* Do not grow or shrink */
     width: 60px; /* Or a width that fits your content */
     text-align: center;
 }
 
-.name-div {
-    padding-left: 70px;
-    flex: 1 1 auto; /* Allow to grow and shrink */
-    text-align: left; /* Aligns the name to the left */
-}
-
-.rank-div {
-    padding-right: 40px;
+.Venue{
     flex: 0 0 auto; /* Do not grow or shrink */
-    width: 80px; /* Or a width that fits your content */
-    text-align: center;
-} 
-
-.totalScore-div {
-    flex: 0 0 auto; /* Do not grow or shrink */
-    width: 80px; /* Or a width that fits your content */
+    width: 60px; /* Or a width that fits your content */
     text-align: center;
 }
+
+.Location{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.Par{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.Purse{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.Start{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+
 
 h1{
     font-style: italic; 

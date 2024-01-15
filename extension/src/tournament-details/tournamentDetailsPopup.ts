@@ -4,16 +4,24 @@ import { loadContent, PageName } from '../contentLoader';
 document.addEventListener('DOMContentLoaded', () => {
     getTournamentDetails(); 
 
-    document.getElementById('tournamentDetailsLink')?.addEventListener('click', () => {
+   // Prevent the default anchor click behavior and load the content for tournament details
+    document.getElementById('tournamentDetailsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('tournament-details');
     });
-    document.getElementById('courseDetailsLink')?.addEventListener('click', () => {
+    // Prevent the default anchor click behavior and load the content for course details
+    document.getElementById('courseDetailsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('course-details');
     });
-    document.getElementById('loginLink')?.addEventListener('click', () => {
+    // Prevent the default anchor click behavior and load the content for Login details
+    document.getElementById('loginLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('login');
     });
-    document.getElementById('settingsLink')?.addEventListener('click', () => {
+    // Prevent the default anchor click behavior and load the content for Setting details
+    document.getElementById('settingsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('settings');
     });
     let count = 0; 
@@ -23,18 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const rowContainer = document.createElement('div');
         rowContainer.classList.add('data-row'); // Use the 'data-row' class for styling
 
-        const divs = document.createElement('div');
-        divs.classList.add(`${element}-div`);
-        divs.innerHTML = `<strong>${title}:</strong> ${element}`;
+        const detailsContainers = document.createElement('div');
+        detailsContainers.classList.add(`${element}-div`);
+        detailsContainers.innerHTML = `<strong>${title}:</strong> ${element}`;
 
         if (count % 2 !== 0) {
-            divs.style.backgroundColor = '#309C64'; // Change to your specific green color
+            detailsContainers.style.backgroundColor = '#309C64'; // Change to your specific green color
             // rowContainer.style.color = '#FAFAF1'
         } else {
-            divs.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
+            detailsContainers.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
         }
 
-        rowContainer.appendChild(divs)
+        rowContainer.appendChild(detailsContainers)
     };
 
 
@@ -48,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const tournamentObj = await response.json();
             console.log('Tournament Data:', tournamentObj); 
             for(let el of tournamentObj){
-                makeListItem(tournamentObj, tournamentObj[el]);
+                makeListItem(el, tournamentObj[el]);
                 count++;  
             }
             

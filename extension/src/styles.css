@@ -114,7 +114,7 @@
 .data-row div {
     margin-right: 10px; /* Adjust space between columns */
     white-space: nowrap; /* Prevents the text from wrapping */
-}
+} 
 
 .position-div {
     padding-left: 10px;

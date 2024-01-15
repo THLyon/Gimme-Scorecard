@@ -9,16 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     getScoreCard();
 
-    document.getElementById('tournamentDetailsLink')?.addEventListener('click', () => {
+   // Prevent the default anchor click behavior and load the content for tournament details
+    document.getElementById('tournamentDetailsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('tournament-details');
     });
-    document.getElementById('courseDetailsLink')?.addEventListener('click', () => {
+// Prevent the default anchor click behavior and load the content for course details
+    document.getElementById('courseDetailsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('course-details');
     });
-    document.getElementById('loginLink')?.addEventListener('click', () => {
+// Prevent the default anchor click behavior and load the content for Login details
+    document.getElementById('loginLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('login');
     });
-    document.getElementById('settingsLink')?.addEventListener('click', () => {
+// Prevent the default anchor click behavior and load the content for Setting details
+    document.getElementById('settingsLink')?.addEventListener('click', (e) => {
+        e.preventDefault();
         loadContent('settings');
     });
 
