@@ -6,9 +6,8 @@
   "scripts": {
     "build": "webpack --mode production",
     "watch": "webpack --mode development --watch",
-    "start": "node server/server.js", 
-    "start:dev": "nodemon server/server.js" 
-
+    "start": "node server/server.js",
+    "start:dev": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +30,7 @@
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.256",
     "css-loader": "^6.9.0",
     "nodemon": "^3.0.2",
     "style-loader": "^3.3.4",

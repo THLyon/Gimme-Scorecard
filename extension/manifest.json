@@ -31,7 +31,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["src/tournament-details.html", "src/course-details.html"],
+      "resources": ["src/tournamentDetails/tournamentDetails.html", "src/courseDetails/courseDetails.html"],
       "matches": ["<all_urls>"] 
     }
   ],
