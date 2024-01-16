@@ -198,3 +198,125 @@ h1{
     font-style: italic; 
 }
 
+////////
+
+
+.gimme-html {
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    align-content: space-around;
+
+    background-color: #1c4932;
+    height: 550px;
+    width: 620px; 
+    /* padding: 0px !important; */
+    /* over;flow: hidden; */
+}
+
+.gimme-main-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: #1c4932;
+width: 80%; /* Scaled width for responsiveness */
+max-width: 620px; /* Maximum width to match your setting */
+margin: 20px auto; /* Centering the container */
+}
+
+.gimme-header-container {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #DAB033;
+color: #333;
+width: 100%; /* Full container width */
+padding: 10px; /* Padding for aesthetic spacing */
+}
+
+.menu-icon {
+cursor: pointer;
+font-size: 24px; /* Larger icon size */
+position: absolute;
+right: 20px; /* Adjusted for spacing */
+top: 10px; /* Adjusted for spacing */
+}
+
+.popup-menu {
+display: none; /* Hidden by default */
+position: absolute;
+top: 60px; /* Below the header, adjusted for spacing /
+right: 20px; / Adjusted for spacing /
+background: #1c3424;
+color: #ffffff;
+width: 200px; / Width of menu /
+box-shadow: 0 4px 8px rgba(132, 148, 140, 0.8);
+z-index: 1000; / Ensures it appears above other elements */
+}
+
+.popup-menu a {
+display: block;
+padding: 12px; /* Increased padding for better click area */
+color: white;
+text-decoration: none;
+border-bottom: 1px solid #6a7d63;
+}
+
+.popup-menu a:hover, .popup-menu a:focus {
+background-color: #555; /* Provides visual feedback on hover and focus */
+}
+
+.tournament-title-container {
+text-align: center;
+justify-content: center;
+align-items: center;
+margin-top: 5px;
+margin-bottom: 5px;
+background-color: #1c6747;
+border: solid #f8f8ea;
+border-width: 1px;
+color: #FAFAF1;
+height: 30px;
+width: 100%; /* Full width of parent container */
+}
+
+.tournament-list {
+overflow: auto;
+display: flex;
+flex-direction: column;
+justify-content: flex-start; /* Align items to the start of the flex-direction /
+align-items: center;
+background-color: #FAFAF1;
+margin-top: 4px;
+width: 100%; / Full width of parent container /
+max-height: 440px; / Maximum height with overflow */
+}
+
+.data-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color: #2e9474;
+margin: 3px;
+width: 95%; /* Slightly less than full width for inner margins */
+padding: 5px;
+border-radius: 1px;
+}
+
+.data-row div {
+margin-right: 10px; /* Space between text /
+white-space: nowrap; / Prevents the text from wrapping */
+}
+
+.detail-title, .detail-value {
+flex: 1; /* Divide space equally between title and value /
+text-align: left;
+padding: 0 5px; / Padding on the sides */
+}
+
+h1 {
+font-style: italic;
+color: #DAB033;
+margin-bottom: 10px; /* Space below the header */
+}
