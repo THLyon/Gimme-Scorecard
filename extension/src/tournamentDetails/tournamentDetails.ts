@@ -1,5 +1,17 @@
 import { loadContent, PageName } from '../contentLoader';
+import './tournamentDetails.styles.css';
 
+
+interface Tournament {
+    Tournament_Name: string;
+    Start_Date: string;
+    End_Date: string;
+    Venue: string;
+    Location: string;
+    Par: number;
+    Purse: number;
+    Start: string;
+  }
 
 document.addEventListener('DOMContentLoaded', () => {
     getTournamentDetails(); 
@@ -7,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // Prevent the default anchor click behavior and load the content for tournament details
     document.getElementById('tournamentDetailsLink')?.addEventListener('click', (e) => {
         e.preventDefault();
-        loadContent('tournament-details');
+        loadContent('tournamentDetails');
     });
     // Prevent the default anchor click behavior and load the content for course details
     document.getElementById('courseDetailsLink')?.addEventListener('click', (e) => {
@@ -24,28 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         loadContent('settings');
     });
-    let count = 0; 
-
-    const makeListItem = (title: string, element: string | number) => {
-
-        const rowContainer = document.createElement('div');
-        rowContainer.classList.add('data-row'); // Use the 'data-row' class for styling
-
-        const detailsContainers = document.createElement('div');
-        detailsContainers.classList.add(`${element}-div`);
-        detailsContainers.innerHTML = `<strong>${title}:</strong> ${element}`;
-
-        if (count % 2 !== 0) {
-            detailsContainers.style.backgroundColor = '#309C64'; // Change to your specific green color
-            // rowContainer.style.color = '#FAFAF1'
-        } else {
-            detailsContainers.style.backgroundColor = '#D4D4D2'; // Change to your specific gray color
-        }
-
-        rowContainer.appendChild(detailsContainers)
-    };
-
-
+    // let count = 0; 
 
     async function getTournamentDetails() {
         try {
@@ -53,21 +44,43 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error('API request failed');
             }
-            const tournamentObj = await response.json();
-            console.log('Tournament Data:', tournamentObj); 
-            for(let el of tournamentObj){
-                makeListItem(el, tournamentObj[el]);
-                count++;  
-            }
+            const tournaments = await response.json();
+            const tournamentDetailsContainer = document.getElementById('tournament-details');
             
-         } catch (error) {
-                console.error('Error fetching scorecard:', error);
-                if (error instanceof TypeError) {
-                    console.error('There was a network error:', error.message);
-                    // Additional logic to handle network errors can go here
+            if (tournamentDetailsContainer) { // Check if the element exists
+                for (const tournament of tournaments) {
+                    for (const [key, value] of Object.entries(tournament)) {
+                        const detailRow = makeListItem(key, value as string | number);
+                        tournamentDetailsContainer.appendChild(detailRow);
+                    }
                 }
+            } else {
+                console.error('Tournament details container not found');
             }
+        } catch (error) {
+            console.error('Error fetching tournament details:', error);
+        }
     }
+    
+    function makeListItem(key: string, value: string | number) {
+        const rowContainer = document.createElement('div');
+        rowContainer.classList.add('data-row');
+        
+        const detailTitle = document.createElement('div');
+        detailTitle.classList.add('detail-title');
+        detailTitle.textContent = `${key}:`;
+        
+        const detailValue = document.createElement('div');
+        detailValue.classList.add('detail-value');
+        // Check if the value is a string or number and set textContent accordingly
+        detailValue.textContent = typeof value === 'number' ? value.toString() : value;
+        
+        rowContainer.appendChild(detailTitle);
+        rowContainer.appendChild(detailValue);
+        
+        return rowContainer;
+    }
+    
     const menuIcon = document.getElementById('menuIcon');
     menuIcon?.addEventListener('click', toggleMenu);
 
@@ -81,9 +94,6 @@ function toggleMenu() {
         menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
 }
-    
-    // const menu = document.getElementById('popupMenu');
-    // menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 
 
 function closeMenu(event: MouseEvent) {

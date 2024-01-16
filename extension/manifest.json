@@ -15,27 +15,34 @@
     "https://api.sportsdata.io/golf/v2/json/Leaderboard",
     "https://api.sportsdata.io/golf/v2/json/CurrentSeason",
     "https://api.sportsdata.io/golf/v2/json/Tournaments", 
-    "https://localhost:3434/api/test"
+    "https://localhost:3434/api/test",
+    "https://localhost:3434/api/tournament", 
+    "https://localhost:3434/"
   ],
   "action": {
     "default_popup": "/popup.html",
     "default_title": "Gimme"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "json": ["./dist/bundle.js"],
-      "css": ["src/styles.css"],
-      "run_at": "document_start"
-    }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["src/tournamentDetails/tournamentDetails.html", "src/courseDetails/courseDetails.html"],
-      "matches": ["<all_urls>"] 
-    }
-  ],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'"
+    "web_accessible_resources": [
+      {
+        "resources": [
+          "dist/tournamentDetails.html",
+          "dist/popup.html",
+          "dist/tournamentDetails.css",
+          "dist/index.css", 
+          "dist/index.bundle.js", 
+          "dist/tournamentDetails.bundle.js", 
+          "dist/contentLoader.bundle.js"
+        ],
+        "matches": ["<all_urls>"]
+      }
+    ],
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["dist/index.bundle.js"],
+        "css": ["dist/index.css"],
+        "run_at": "document_start"
+      }
+    ]
   }
-}

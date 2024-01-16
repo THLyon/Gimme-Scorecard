@@ -1,7 +1,7 @@
 // import { loadTournamentDetails } from './tournament_details/tournamentDetailsPopup';
 // import { loadCourseDetails } from './course_details/courseDetailsPopup';
 import { loadContent, PageName } from './contentLoader';
-
+import './index.styles.css';
 
 document.addEventListener('DOMContentLoaded', () => {
     // document.querySelector('#tournamentDetailsLink')?.addEventListener('click', () => loadContent('tournament-details'));
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // Prevent the default anchor click behavior and load the content for tournament details
     document.getElementById('tournamentDetailsLink')?.addEventListener('click', (e) => {
         e.preventDefault();
-        loadContent('tournament-details');
+        loadContent('tournamentDetails');
     });
 // Prevent the default anchor click behavior and load the content for course details
     document.getElementById('courseDetailsLink')?.addEventListener('click', (e) => {
