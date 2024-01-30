@@ -14,31 +14,20 @@ interface Tournament {
   }
 
 document.addEventListener('DOMContentLoaded', () => {
-    getTournamentDetails(); 
+        // Use event delegation to handle clicks on dynamically loaded content
+        document.body.addEventListener('click', async (e) => {
+            const target = e.target as HTMLElement; 
+            if (target && target.id === 'tournamentDetailsLink') {
+                e.preventDefault();
+                console.log('Tournament details link clicked'); // Debugging log
+                await loadContent('tournamentDetails');
+                getTournamentDetails();
+            }
+        });
 
-   // Prevent the default anchor click behavior and load the content for tournament details
-    document.getElementById('tournamentDetailsLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadContent('tournamentDetails');
-    });
-    // Prevent the default anchor click behavior and load the content for course details
-    document.getElementById('courseDetailsLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadContent('course-details');
-    });
-    // Prevent the default anchor click behavior and load the content for Login details
-    document.getElementById('loginLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadContent('login');
-    });
-    // Prevent the default anchor click behavior and load the content for Setting details
-    document.getElementById('settingsLink')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        loadContent('settings');
-    });
-    // let count = 0; 
 
     async function getTournamentDetails() {
+        console.log('Fetching tournament details'); // Debugging log
         try {
             const response = await fetch('http://localhost:3434/api/dummyTournament');
             if (!response.ok) {

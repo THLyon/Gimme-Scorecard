@@ -29,7 +29,7 @@ router.get('/test', leaderboardController.getLeaderboard, (req, res) => {
     return res.status(200).json(res.locals.leaders)
 })
 
-router.get('/dummyTournament', tournamentDummy.getSeason, tournamentDummy.getTournament, tournamentDummy.getTournament, (req, res) => {
+router.get('/dummyTournament', tournamentDummy.getSeason, tournamentDummy.getTournamentDetails, (req, res) => {
     return res.status(200).json(res.locals.tournamentDummy);
 });
 

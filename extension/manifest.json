@@ -17,6 +17,7 @@
     "https://api.sportsdata.io/golf/v2/json/Tournaments", 
     "https://localhost:3434/api/test",
     "https://localhost:3434/api/tournament", 
+    "https://localhost:3434/apu/dummyTournament", 
     "https://localhost:3434/"
   ],
   "action": {

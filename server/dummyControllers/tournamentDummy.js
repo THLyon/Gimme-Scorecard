@@ -42,45 +42,45 @@ tournamentDummy.getSeason = async (req, res, next) => {
        })));
 }
 
-tournamentDummy.getTournament =  (req, res, next) => {
-    let seasonId = res.locals.season
-          fetch(`https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`,{
-          method: 'GET',
-          headers: {
-              'Ocp-Apim-Subscription-Key':  `${apiKey}`,
-              'Accept': 'application/json',
-              'Content-type': 'application/json'
-          }
-  })
-     .then((data) => data.json())
-     .then((data) => {
-      for(let i = 0; i < data.length; i++){
-          if(data[i].hasOwnProperty('StartDate') || data[i].hasOwnProperty('EndDate')){
-              if(data[i].StartDate === currentDate(Date(), 0) || data[i].StartDate === currentDate(Date(), 1) || data[i].StartDate === currentDate(Date(), 2) || data[i].StartDate === currentDate(Date(), 3) || data[i].StartDate === currentDate(Date(), 4) || data[i].EndDate === currentDate(Date(), 0) || data[i].EndDate === currentDate(Date(), 1) || data[i].EndDate === currentDate(Date(), 2) || data[i].EndDate === currentDate(Date(), 3) || data[i].EndDate === currentDate(Date(), 4)){
-                  res.locals.tournament = data[i].TournamentID;
-                  console.log(res.locals.tournament)
-          } else {
-          // else if (data[i].StartDate !== currentDate(Date(), 0) && data[i].StartDate !== currentDate(Date(), 1) && data[i].StartDate !== currentDate(Date(), 2) && data[i].StartDate !== currentDate(Date(), 3) && data[i].StartDate !== currentDate(Date(), 4) && data[i].EndDate !== currentDate(Date(), 0) && data[i].EndDate !== currentDate(Date(), 1) && data[i].EndDate !== currentDate(Date(), 2) && data[i].EndDate !== currentDate(Date(), 3) && data[i].EndDate !== currentDate(Date(), 4)){
-          //     return 'no tournament today';
-          // }
-              return 'no tournament today';
+// tournamentDummy.getTournament =  (req, res, next) => {
+//     let seasonId = res.locals.season
+//           fetch(`https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`,{
+//           method: 'GET',
+//           headers: {
+//               'Ocp-Apim-Subscription-Key':  `${apiKey}`,
+//               'Accept': 'application/json',
+//               'Content-type': 'application/json'
+//           }
+//   })
+//      .then((data) => data.json())
+//      .then((data) => {
+//       for(let i = 0; i < data.length; i++){
+//           if(data[i].hasOwnProperty('StartDate') || data[i].hasOwnProperty('EndDate')){
+//               if(data[i].StartDate === currentDate(Date(), 0) || data[i].StartDate === currentDate(Date(), 1) || data[i].StartDate === currentDate(Date(), 2) || data[i].StartDate === currentDate(Date(), 3) || data[i].StartDate === currentDate(Date(), 4) || data[i].EndDate === currentDate(Date(), 0) || data[i].EndDate === currentDate(Date(), 1) || data[i].EndDate === currentDate(Date(), 2) || data[i].EndDate === currentDate(Date(), 3) || data[i].EndDate === currentDate(Date(), 4)){
+//                   res.locals.tournament = data[i].TournamentID;
+//                   console.log(res.locals.tournament)
+//           } else {
+//           // else if (data[i].StartDate !== currentDate(Date(), 0) && data[i].StartDate !== currentDate(Date(), 1) && data[i].StartDate !== currentDate(Date(), 2) && data[i].StartDate !== currentDate(Date(), 3) && data[i].StartDate !== currentDate(Date(), 4) && data[i].EndDate !== currentDate(Date(), 0) && data[i].EndDate !== currentDate(Date(), 1) && data[i].EndDate !== currentDate(Date(), 2) && data[i].EndDate !== currentDate(Date(), 3) && data[i].EndDate !== currentDate(Date(), 4)){
+//           //     return 'no tournament today';
+//           // }
+//               return 'no tournament today';
   
-          }
+//           }
   
-       }
-      }
-      next()
-     })
-     .catch(err => createErr({
-            log: 'getTournament middleware Error', 
-            status: 400,
-            message: {err: 'error in getTournament middlware'}
-     }));
-  }
+//        }
+//       }
+//     return  next()
+//      })
+//      .catch(err => createErr({
+//             log: 'getTournament middleware Error', 
+//             status: 400,
+//             message: {err: 'error in getTournament middlware'}
+//      }));
+//   }
 
 
 //middleware to access tournament:
-tournamentDummy.getTournament =  (req, res, next) => {
+tournamentDummy.getTournamentDetails =  (req, res, next) => {
     console.log('Entered the tournament middleware')
   let seasonId = res.locals.season
         fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/104`,{
