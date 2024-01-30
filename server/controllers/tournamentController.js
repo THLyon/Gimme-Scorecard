@@ -63,7 +63,7 @@ tournamentController.getTournament =  (req, res, next) => {
         const endDate = new Date(end);
         return currentDate >= startDate && currentDate <= endDate;
       }
-
+      console.log('In tournament controller')
       for (let i = 0; i < data.length; i++) {
         const tournament = data[i];
         if (tournament.StartDate && tournament.EndDate) {

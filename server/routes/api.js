@@ -1,6 +1,7 @@
 
 const express = require('express')
 const tournamentController = require('../controllers/tournamentController');
+const tournamentDummy = require('../dummyControllers/tournamentDummy');
 //const leaderboardController = require('../controllers/leaderboardController');
 // import leaderboardController from '../controllers/leaderboardController.js';
 const leaderboardController = require('../controllers/leaderboardController.js')
@@ -20,14 +21,17 @@ router.get('/details', courseController.getCourse, (req, res) => {
     return res.status(200).send(res.locals.details); 
 })
 
-router.get('/tournament', tournamentController.getSeason, tournamentController.getTournament, (req, res) => {
-    return res.status(200).json(res.locals.tournament);
-});
+// router.get('/tournament', tournamentController.getSeason, tournamentController.getTournament, (req, res) => {
+//     return res.status(200).json(res.locals.tournament);
+// });
 
 router.get('/test', leaderboardController.getLeaderboard, (req, res) => {
     return res.status(200).json(res.locals.leaders)
 })
 
+router.get('/dummyTournament', tournamentDummy.getSeason, tournamentDummy.getTournament, tournamentDummy.getTournament, (req, res) => {
+    return res.status(200).json(res.locals.tournamentDummy);
+});
 
 
 //! USER ROUTES

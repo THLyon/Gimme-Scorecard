@@ -6,7 +6,7 @@
     align-content: space-around;
 
     background-color: #1c4932;
-    height: 550px;
+    height: 540px;
     width: 620px; 
     /* padding: 0px !important; */
     /* over;flow: hidden; */
@@ -41,7 +41,7 @@
     font-size: 24px; /* Adjust size as needed */
     position: absolute;
     right: 30px;
-    top: 19px;
+    top: 14px;
 }
 
 /* Style for the dropdown menu */

@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function getTournamentDetails() {
         try {
-            const response = await fetch('http://localhost:3434/api/tournament');
+            const response = await fetch('http://localhost:3434/api/dummyTournament');
             if (!response.ok) {
                 throw new Error('API request failed');
             }
