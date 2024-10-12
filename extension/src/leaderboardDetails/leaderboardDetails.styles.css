@@ -69,8 +69,8 @@
     background-color: #555;
 }
 
-/** generic */
-.generic-title-container{
+/** Leaderboard */
+.leaderboard-title-container{
     display: flex;
     text-align: center;
     justify-content: center;
@@ -85,7 +85,7 @@
     width: 603px;
 }
 
-.generic-list{
+.leaderboard-list{
     overflow: auto; 
     display: flex; 
     flex-direction: column;

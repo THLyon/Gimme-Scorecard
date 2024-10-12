@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     index: './extension/src/index.ts', // Your entry point
     tournamentDetails: './extension/src/tournamentDetails/tournamentDetails.ts', 
+    leaderboardDetails: './extension/src/leaderboardDetails/leaderboardDetails.ts',
     contentLoader: './extension/src/contentLoader.ts'
   },
   output: {
@@ -37,6 +38,7 @@ module.exports = {
       patterns: [
         { from: 'extension/src/tournamentDetails/tournamentDetails.html', to: 'tournamentDetails.html' },
         { from: 'extension/popup.html', to: 'popup.html' },
+        { from: 'extension/src/leaderboardDetails/leaderboard.html', to: 'leaderboard.html' },
         // Add similar patterns for other HTML/CSS files you want to copy.
       ]
     }),

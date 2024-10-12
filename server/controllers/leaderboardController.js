@@ -102,7 +102,7 @@ leaderboardController.getLeaderboard =  (req, res, next) => {
     let tournamentId = res.locals.tournament;
     console.log('leaderboard')
     // fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`,{
-        fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/104`,{
+        fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/588`,{
         method: 'GET',
         headers: {
             'Ocp-Apim-Subscription-Key':  `${apiKey}`,

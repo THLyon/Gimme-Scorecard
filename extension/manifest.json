@@ -27,13 +27,19 @@
     "web_accessible_resources": [
       {
         "resources": [
-          "dist/tournamentDetails.html",
           "dist/popup.html",
-          "dist/tournamentDetails.css",
-          "dist/index.css", 
           "dist/index.bundle.js", 
-          "dist/tournamentDetails.bundle.js", 
-          "dist/contentLoader.bundle.js"
+          "dist/index.css",
+
+          "dist/contentLoader.bundle.js",
+
+          "dist/leaderboardDetails.bundle.js",
+          "dist/leaderboardDetails.html", 
+          "dist/leaderboardDetails.styles.css",
+
+          "dist/tournamentDetails.bundle.js",
+          "dist/tournamentDetails.html",
+          "dist/tournamentDetails.css"
         ],
         "matches": ["<all_urls>"]
       }
@@ -41,7 +47,7 @@
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["dist/index.bundle.js"],
+        "js": ["dist/index.bundle.js", "dist/leaderboardDetails.bundle.js", "dist/tournamentDetails.bundle.js"],
         "css": ["dist/index.css"],
         "run_at": "document_start"
       }

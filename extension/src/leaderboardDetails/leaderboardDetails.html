@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' http://localhost:3434;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="dist/tournamentDetails.css"> 
+    <link rel="stylesheet" href="dist/leaderboardDetails.css"> 
     <title>Gimme</title>
 </head>
 <body>
@@ -15,19 +15,19 @@
             <h1> Gimme Scorecard </h1>
         </div>
     </div>
-        <div id="popupMenu" class="popup-menu">
-            <a href="#" id="leaderboardListLink">Leaderboard</a>
-            <a href="#" id="tournamentDetailsLink">Tournament Details</a>
-            <a href="#" id="courseDetailsLink">Course Details</a>
-            <a href="#" id="loginLink">Login</a>
-            <a href="#" id="settingsLink">Settings</a>
-        </div>
+    <div id="popupMenu" class="popup-menu">
+        <a href="#" id="leaderboardListLink">Leaderboard</a>
+        <a href="#" id="tournamentDetailsLink">Tournament Details</a>
+        <a href="#" id="courseDetailsLink">Course Details</a>
+        <a href="#" id="loginLink">Login</a>
+        <a href="#" id="settingsLink">Settings</a>
     </div>
-        <div class="generic-title-container">
-            <h2> Tournament Details </h2>
+        <div>
+            <div class="leaderboard-title-container">
+                <h2> Leaderboard </h2>
+            </div>
+            <div id="leaderboard-list" class="leaderboard-list"></div>
         </div>
-        <div id="tournament-details" class="tournament-details"></div>
-    </div>
-    <script type="module" src="dist/tournamentDetails.bundle.js"></script>
+    <script type="module" src="dist/index.bundle.js"></script>
 </body>
-</html>
+</html> 
