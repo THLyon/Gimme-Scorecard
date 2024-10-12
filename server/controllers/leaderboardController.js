@@ -1,5 +1,3 @@
-// const fs = require('fs/promises'); 
-// const path = require('path'); 
 const fetch = (...args) =>
 	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -7,14 +5,8 @@ const fetch = (...args) =>
 //api to access current season
 const currentSeasonApi = `https://api.sportsdata.io/golf/v2/json/CurrentSeason`;
 
-//api to access tournaments via season 
-//const TournamentIdApi = `https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`
-
-//api to access leaderboard of a tournament
-//const leaderboardApi = `https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`;
-
-//site wide api key (https://sportsdata.io/developers/api-documentation/golf)
-const apiKey = '74708e84c6d243bc832af07d61be8d8d';
+//? spun temp api key, proper protocol now in place. 
+const apiKey = process.env.API_KEY;
 
 function currentDate(date, num = 0) {
     let d = new Date(date),
@@ -29,23 +21,20 @@ function currentDate(date, num = 0) {
 };
 
 const leaderboardController = {}; 
-// const courseController = {};
 
 //middleware to access season: 
 leaderboardController.getSeason = async (req, res, next) => {
     fetch(currentSeasonApi, {
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key': `${apiKey}`,
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json', 
             'Content-type': 'application/json'
         }
 }) 
     .then((data) => data.json())
     .then((data) => {
-        res.locals.season = data.SeasonID
-        console.log(data.SeasonID);
-        //seasonId = data.SeasonID; 
+        res.locals.season = data.SeasonID 
         next(); 
     })
     .catch(err => next(createErr({ 
@@ -62,7 +51,7 @@ leaderboardController.getTournament =  (req, res, next) => {
         fetch(`https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`,{
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key':  `${apiKey}`,
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
@@ -73,11 +62,7 @@ leaderboardController.getTournament =  (req, res, next) => {
         if(data[i].hasOwnProperty('StartDate') || data[i].hasOwnProperty('EndDate')){
             if(data[i].StartDate === currentDate(Date(), 0) || data[i].StartDate === currentDate(Date(), 1) || data[i].StartDate === currentDate(Date(), 2) || data[i].StartDate === currentDate(Date(), 3) || data[i].StartDate === currentDate(Date(), 4) || data[i].EndDate === currentDate(Date(), 0) || data[i].EndDate === currentDate(Date(), 1) || data[i].EndDate === currentDate(Date(), 2) || data[i].EndDate === currentDate(Date(), 3) || data[i].EndDate === currentDate(Date(), 4)){
                 res.locals.tournament = data[i].TournamentID;
-                console.log(res.locals.tournament)
         } else {
-        // else if (data[i].StartDate !== currentDate(Date(), 0) && data[i].StartDate !== currentDate(Date(), 1) && data[i].StartDate !== currentDate(Date(), 2) && data[i].StartDate !== currentDate(Date(), 3) && data[i].StartDate !== currentDate(Date(), 4) && data[i].EndDate !== currentDate(Date(), 0) && data[i].EndDate !== currentDate(Date(), 1) && data[i].EndDate !== currentDate(Date(), 2) && data[i].EndDate !== currentDate(Date(), 3) && data[i].EndDate !== currentDate(Date(), 4)){
-        //     return 'no tournament today';
-        // }
             return 'no tournament today';
 
         }
@@ -93,19 +78,15 @@ leaderboardController.getTournament =  (req, res, next) => {
    }));
 }
 
-//if issue add async to function
-    //await to fetch
-    //async to fetch at frontend
-
 //middleware to access leaderboard
 leaderboardController.getLeaderboard =  (req, res, next) => {
     let tournamentId = res.locals.tournament;
-    console.log('leaderboard')
     // fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`,{
+        //! Forced specified Leaderboard to avoid issues with lack of tournament play during work days. 
         fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/588`,{
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key':  `${apiKey}`,
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
@@ -113,20 +94,8 @@ leaderboardController.getLeaderboard =  (req, res, next) => {
     .then((data) => data.json())
     .then((data) => {
         const leaders = []; 
-        // for(let i = 0; i < data.Tournament.Players.length; i++){
-        //     if(i <= 10){
-        //         leaders.push(data.Tournament.Players[i])
-        //     }
-        //  }
          let i = 0; 
-        //  let name = nameFunc(data.Players[i].Name)
          while(i < 10){
-           
-        //    function nameFunc(player){
-        //         for(let j = 0; j < player.length; j++){
-        //             if(j === ' ') return `${player[j] + '.' + ' ' + player[j+1]}`
-        //         }
-        //     };
             leaders.push({'Position': i, 'Name': data.Players[i].Name, 'Rank': data.Players[i].Rank, 'TotalScore': Math.ceil((data.Players[i].TotalScore + 288)/4)})
             i++ 
          }

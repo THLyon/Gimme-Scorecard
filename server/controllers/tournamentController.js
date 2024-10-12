@@ -1,5 +1,3 @@
-// const fs = require('fs/promises'); 
-// const path = require('path'); 
 const fetch = (...args) =>
 	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -7,23 +5,16 @@ const fetch = (...args) =>
 //api to access current season
 const currentSeasonApi = `https://api.sportsdata.io/golf/v2/json/CurrentSeason`;
 
-//api to access tournaments via season 
-//const TournamentIdApi = `https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`
-
-//api to access leaderboard of a tournament
-//const leaderboardApi = `https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`;
-
-//site wide api key (https://sportsdata.io/developers/api-documentation/golf)
-const apiKey = '74708e84c6d243bc832af07d61be8d8d';
+//? spun temp api key, proper protocol now in place. 
+const apiKey = process.env.API_KEY;
 const tournamentController = {}; 
-// const courseController = {};
 
 //middleware to access season: 
 tournamentController.getSeason = async (req, res, next) => {
     fetch(currentSeasonApi, {
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key': `${apiKey}`,
+          'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json', 
             'Content-type': 'application/json'
         }
@@ -31,8 +22,7 @@ tournamentController.getSeason = async (req, res, next) => {
     .then((data) => data.json())
     .then((data) => {
         res.locals.season = data.SeasonID
-        console.log(data.SeasonID);
-        //seasonId = data.SeasonID; 
+        seasonId = data.SeasonID; 
         next(); 
     })
     .catch(err => next(createErr({ 
@@ -45,12 +35,11 @@ tournamentController.getSeason = async (req, res, next) => {
 
 //middleware to access tournament:
 tournamentController.getTournament =  (req, res, next) => {
-    console.log('Entered the tournament middleware')
   let seasonId = res.locals.season
         fetch(`https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`,{
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key':  `${apiKey}`,
+          'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
@@ -79,7 +68,6 @@ tournamentController.getTournament =  (req, res, next) => {
               "Start": tournament.StartDateTime
             };
             res.locals.tournament = tournamentDetails;
-            console.log(res.locals.tournament);
             break; 
           }
         }

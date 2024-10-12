@@ -6,14 +6,8 @@ const fetch = (...args) =>
 //api to access current season
 const currentSeasonApi = `https://api.sportsdata.io/golf/v2/json/CurrentSeason`;
 
-//api to access tournaments via season 
-//const TournamentIdApi = `https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`
-
-//api to access leaderboard of a tournament
-//const leaderboardApi = `https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`;
-
-//site wide api key (https://sportsdata.io/developers/api-documentation/golf)
-const apiKey = '74708e84c6d243bc832af07d61be8d8d';
+//? spun temp api key, proper protocol now in place. 
+const apiKey = process.env.API_KEY;
 
 function currentDate(date, num = 0) {
     let d = new Date(date),
@@ -34,7 +28,7 @@ courseController.getSeason = (req, res, next) => {
     fetch(currentSeasonApi, {
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key': '74708e84c6d243bc832af07d61be8d8d',
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json', 
             'Content-type': 'application/json'
         }
@@ -58,7 +52,7 @@ courseController.getTournament = (req, res, next) => {
         fetch(`https://api.sportsdata.io/golf/v2/json/Tournaments/${seasonId}`,{
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key': '74708e84c6d243bc832af07d61be8d8d',
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
@@ -89,12 +83,12 @@ courseController.getTournament = (req, res, next) => {
 
 courseController.getCourse = (req, res, next) => {
     let tournamentId = res.locals.tournament;
-    console.log('course')
     // fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/${tournamentId}`,{
+        //! Forced specified Leaderboard to avoid issues with lack of tournament play during work days. 
         fetch(`https://api.sportsdata.io/golf/v2/json/Leaderboard/104`,{
         method: 'GET',
         headers: {
-            'Ocp-Apim-Subscription-Key': '74708e84c6d243bc832af07d61be8d8d',
+            'Ocp-Apim-Subscription-Key': apiKey,
             'Accept': 'application/json',
             'Content-type': 'application/json'
         }
@@ -109,9 +103,8 @@ courseController.getCourse = (req, res, next) => {
             'Par': data.Tournament.Par,
             'Yards': data.Tournament.Yards,
         };
-        res.locals.details = details;
-        console.log(details);
-         return next();
+        res.locals.details = details;;
+        return next();
     })
     .catch(err => createErr({
               log: 'getLeaderboard middleware Error', 
