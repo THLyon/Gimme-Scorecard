@@ -160,3 +160,165 @@ h1{
 }
 
 
+.gimme-html{
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: space-around;
+    align-content: space-around;
+
+    background-color: #1c4932;
+    height: 540px;
+    width: 620px; 
+    /* padding: 0px !important; */
+    /* over;flow: hidden; */
+};
+
+.gimme-main-container{
+    display: flex; 
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #1c4932;
+    width: 450px; 
+    height: 390px;
+}
+
+.gimme-header-container {
+    display: flex;
+    justify-content: center;  /*Aligns the menu icon and title to opposite ends */
+    align-items: center;
+    background-color: #DAB033;
+    color: #333333;
+    height: 40px;
+    width: 585px; /* Full width */
+    padding: 0 10px; /* Add some padding on the sides */
+}
+
+/** Menu Drop Down */
+/* Style for the hamburger icon */
+.menu-icon {
+    cursor: pointer;
+    font-size: 24px; /* Adjust size as needed */
+    position: absolute;
+    right: 30px;
+    top: 14px;
+}
+
+/* Style for the dropdown menu */
+.popup-menu {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioning relative to its parent */
+    top: 50px; /* Positioned right below the header */
+    right: 0;
+    background: #1c3424; /* Menu background color */
+    color: #ffffff;
+    width: 200px; /* Full width */
+    box-shadow: 0 4px 8px #84948c; /* Optional: add some shadow for depth */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+.popup-menu a {
+    display: block;
+    padding: 10px; 
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #6a7d63;
+}
+
+.popup-menu a:hover {
+    background-color: #555;
+}
+
+/** generic */
+.generic-title-container{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px; 
+    background-color:  #1c6747;
+    border: solid #f8f8ea;
+    border-width: 1px;
+    color: #FAFAF1;
+    height: 30px;
+    width: 603px;
+}
+
+.generic-list{
+    overflow: auto; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+
+    background-color:#FAFAF1;
+    margin-top: 4px;
+    height: 440px;
+    width: 605px;  
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2e9474;
+    margin: 3px;
+    height: 30px;
+    width: 585px;
+    padding: 5px;
+    border-radius: 1px;
+}
+
+.data-row div {
+    margin-right: 10px; /* Adjust space between columns */
+    white-space: nowrap; /* Prevents the text from wrapping */
+} 
+
+.position-div {
+    padding-left: 10px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.rank-div{
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+ .totalScore-div {
+    padding-right: 10px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 60px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+.name-div {
+    padding-left: 70px;
+    flex: 1 1 auto; /* Allow to grow and shrink */
+    text-align: left; /* Aligns the name to the left */
+}
+
+.rank-div {
+    padding-right: 40px;
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 80px; /* Or a width that fits your content */
+    text-align: center;
+} 
+
+.totalScore-div {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 80px; /* Or a width that fits your content */
+    text-align: center;
+}
+
+h1{
+    font-style: italic; 
+}
+
+
